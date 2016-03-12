@@ -1,0 +1,41 @@
+#!/usr/bin/env ansible-playbook
+# vim:ft=ansible :
+# ============================================================
+#  Author: chusiang / rickchcc
+#  Repo: https://github.com/chusiang/dlib.ansible
+#  Filename: deploy-dlib.yml
+#  Modified: 2016-03-12 18:12
+#  Description: deploy dlib on ubuntu 14.04
+# =========================================================== 
+
+---
+- name: deploy dlib
+  hosts: all
+  sudo: True
+  tasks:
+
+    - name: install apt packages
+      apt: name={{ item }} update_cache=yes state=latest
+      with_items: 
+        - libboost-python1.55-dev
+        - python3-pip
+        - build-essential
+        - cmake
+
+    - name: modify FindPythonInterp.cmake
+      template: src=templates/cmake/FindPythonInterp.cmake.j2 dest=/usr/share/cmake-2.8/Modules/FindPythonInterp.cmake
+
+    - name: modify FindPythonInterp.cmake
+      template: src=templates/cmake/FindPythonLibs.cmake.j2 dest=/usr/share/cmake-2.8/Modules/FindPythonLibs.cmake
+
+    - name: install dlib with pip3
+      pip: name=dlib executable=pip3
+
+    - name: test
+      command: python3 -c "import dlib"
+      register: test_result
+
+    - name: print result
+      debug:
+        msg: "{{ test_result }}"
+
