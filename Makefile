@@ -1,6 +1,6 @@
 .PHONY: All init run provision clean
 
-All: init
+All: provision
 
 # init & run.
 run:
