@@ -1,17 +1,16 @@
-.PHONY: All init init_vagrant run clean
+.PHONY: All init run provision clean
 
 All: init
 
-
-init: init_vagrant
-
-init_vagrant:
-	vagrant up
-
+# init & run.
 run:
 	vagrant up
 
-# remove vm.
+# only run init script & ansible.
+provision:
+	vagrant provision
+
+# remove vm (guest os).
 clean:
 	vagrant destroy
 

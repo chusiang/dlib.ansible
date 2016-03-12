@@ -1,11 +1,16 @@
-# Deploy dlib with Ansible on Ubuntu 14.04
+# Deploy dlib C++ with Ansible on Ubuntu 14.04
 
-1. minimun memory requirment is 4GB during installation.
+1. Need minimun memory requirment is 4GB during installation.
 2. Run local lab with Vagrant, Ansible and Make.
+
 
 ## Setup
 
-$ make init
+### Local (Vagrant)
+
+It's setting with `Vagrantfile`, just run `vagrant up`.
+
+    $ make init
 
 ## Result
 
@@ -51,3 +56,7 @@ $ make init
     
     PLAY RECAP *********************************************************************
     default                    : ok=7    changed=1    unreachable=0    failed=0
+
+## Reference
+
+* [dlib C++ Library - How to compile](http://dlib.net/compile.html)

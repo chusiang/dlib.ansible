@@ -76,13 +76,13 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
   
-  UBUNTU_SCRIPTS = [ "init-vagrant.sh", "install-vim.sh" ]
-  for script_file in UBUNTU_SCRIPTS
+  SCRIPTS = [ "init-vagrant.sh" ]
+  for script_file in SCRIPTS
     config.vm.provision "shell", path: script_file
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "deploy-dlib.yml"
+    ansible.playbook = "deploy-dlib-playbook.yml"
     #ansible.sudo = true
     #ansible.verbose = "vvv"
   end
