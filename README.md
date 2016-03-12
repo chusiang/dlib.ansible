@@ -4,16 +4,30 @@
 2. Run local lab with Vagrant, Ansible and Make.
 
 
-## Setup
+## Run
 
 ### Local (Vagrant)
 
 It's setting with `Vagrantfile`, just run `vagrant up`.
 
     $ make init
+    
+Just run the init script & Ansible with `vagrant provision`.
+
+    $ make
+
+### Remote (Real environment)
+
+1. Modify configure of `ansible.cfg`, `hosts`.
+2. Run Playbook, see more with [Ansible official website](https://www.ansible.com).
+
+        $ ansible-playbook deploy-dlib-playbook.yml --ask-sudo-pass
 
 ## Result
 
+This is a result with [Vagrant](https://www.vagrantup.com). 
+
+    ......
     PLAY [deploy dlib] *************************************************************
     
     TASK [setup] *******************************************************************
@@ -60,3 +74,4 @@ It's setting with `Vagrantfile`, just run `vagrant up`.
 ## Reference
 
 * [dlib C++ Library - How to compile](http://dlib.net/compile.html)
+* [Ansible Lab | chusiang](https://github.com/chusiang/sandbox/tree/develop/ansible)
