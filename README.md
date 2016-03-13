@@ -28,22 +28,29 @@ Just run the init script & Ansible with `vagrant provision`.
 This is a result with [Vagrant](https://www.vagrantup.com). 
 
     ......
+    ==> default: Running provisioner: ansible...
+        default: Running ansible-playbook...
+    [DEPRECATION WARNING]: Instead of sudo/sudo_user, use become/become_user and
+    make sure become_method is 'sudo' (default). This feature will be removed in a
+    future release. Deprecation warnings can be disabled by setting
+    deprecation_warnings=False in ansible.cfg.
+    
     PLAY [deploy dlib] *************************************************************
     
     TASK [setup] *******************************************************************
     ok: [default]
     
     TASK [install apt packages] ****************************************************
-    ok: [default] => (item=[u'libboost-python1.55-dev', u'python3-pip', u'build-essential', u'cmake'])
+    changed: [default] => (item=[u'libboost-python1.55-dev', u'python3-pip', u'build-essential', u'cmake'])
     
     TASK [modify FindPythonInterp.cmake] *******************************************
-    ok: [default]
+    changed: [default]
     
     TASK [modify FindPythonInterp.cmake] *******************************************
-    ok: [default]
+    changed: [default]
     
     TASK [install dlib with pip3] **************************************************
-    ok: [default]
+    changed: [default]
     
     TASK [test] ********************************************************************
     changed: [default]
@@ -57,10 +64,10 @@ This is a result with [Vagrant](https://www.vagrantup.com).
                 "-c",
                 "import dlib"
             ],
-            "delta": "0:00:00.028397",
-            "end": "2016-03-12 10:32:52.419128",
+            "delta": "0:00:00.028786",
+            "end": "2016-03-13 04:22:55.518285",
             "rc": 0,
-            "start": "2016-03-12 10:32:52.390731",
+            "start": "2016-03-13 04:22:55.489499",
             "stderr": "",
             "stdout": "",
             "stdout_lines": [],
@@ -69,7 +76,7 @@ This is a result with [Vagrant](https://www.vagrantup.com).
     }
     
     PLAY RECAP *********************************************************************
-    default                    : ok=7    changed=1    unreachable=0    failed=0
+    default                    : ok=7    changed=5    unreachable=0    failed=0
 
 ## Reference
 
